@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="transition动画随着css3的广泛使用，或多或少都会用到transition的属性transition-timing-function(根据时间的推进改变属性值的变化速率)来做动画效果。而这个属性本身带有6个值可供选择：  ease –(逐渐变慢) 默认值 linear –(匀速) ease-in  –(加速) ease-out  –(减速) ease-in-out  –(加速然后减速)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="让页面动起来">
+<meta property="og:url" content="http://yoursite.com/2018/07/24/贝塞尔曲线/index.html">
+<meta property="og:site_name" content="Blog of xiyue">
+<meta property="og:description" content="transition动画随着css3的广泛使用，或多或少都会用到transition的属性transition-timing-function(根据时间的推进改变属性值的变化速率)来做动画效果。而这个属性本身带有6个值可供选择：  ease –(逐渐变慢) 默认值 linear –(匀速) ease-in  –(加速) ease-out  –(减速) ease-in-out  –(加速然后减速)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/07/24/images/bezier.png">
+<meta property="og:updated_time" content="2018-07-26T04:02:19.929Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="让页面动起来">
+<meta name="twitter:description" content="transition动画随着css3的广泛使用，或多或少都会用到transition的属性transition-timing-function(根据时间的推进改变属性值的变化速率)来做动画效果。而这个属性本身带有6个值可供选择：  ease –(逐渐变慢) 默认值 linear –(匀速) ease-in  –(加速) ease-out  –(减速) ease-in-out  –(加速然后减速)">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/24/images/bezier.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/24/贝塞尔曲线/"/>
+
+
+
+
+
+  <title>让页面动起来 | Blog of xiyue</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Blog of xiyue</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/24/贝塞尔曲线/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiyue">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of xiyue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">让页面动起来</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-24T15:06:15+08:00">
+                2018-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UI相关/" itemprop="url" rel="index">
+                    <span itemprop="name">UI相关</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="transition动画"><a href="#transition动画" class="headerlink" title="transition动画"></a>transition动画</h2><p>随着css3的广泛使用，或多或少都会用到transition的属性<span style="color:#3bb1b3">transition-timing-function</span>(根据时间的推进改变属性值的变化速率)来做动画效果。而这个属性本身带有6个值可供选择：</p>
+<ol>
+<li>ease –(逐渐变慢) 默认值</li>
+<li>linear –(匀速)</li>
+<li>ease-in  –(加速)</li>
+<li>ease-out  –(减速)</li>
+<li>ease-in-out  –(加速然后减速)</li>
+<li><code>cubic-bezier --(自定义时间曲线)</code></li>
+</ol>
+<p>上面前5个都有相应的贝塞尔曲线，如ease对应的贝塞尔曲线是cubic-bezier(0.25, 0.1, 0.25, 1.0)。然而，正是因为有5个现成的效果，导致cubic-bezier经常被忽视。这里主要了解怎么用cubic-bezier。<br><a id="more"></a></p>
+<h2 id="怎样使用贝塞尔曲线？"><a href="#怎样使用贝塞尔曲线？" class="headerlink" title="怎样使用贝塞尔曲线？"></a>怎样使用贝塞尔曲线？</h2><p>贝塞尔曲线之所以被忽视，主要是它不直观。<br><span style="color:#3bb1b3;font-weight:700">cubic-bezier(P1x, P1y, P2x,  P2y)</span><br>上面的四个参数，其实是贝塞尔曲线中P1和P2两个点的相应的x轴和y轴值。<br><img src="../images/bezier.png" alt="贝塞尔曲线"><br>因为在css3中的贝塞尔曲线P0和P3是固定了的。P0点的值总是(0, 0)，P3点的值总是(1, 1)。所以P1和P2两个点的值总是在[0, 1]区域内，否则无效。<br>其中<strong>x轴</strong>是动画所花的时间，<strong>y轴</strong>是被更改的属性<br><a href="http://cubic-bezier.com/#.17,.67,.83,.67" target="_blank" rel="noopener">http://cubic-bezier.com</a>网站是个很好的工具，可以在线调试贝塞尔曲线，当满足你想要的运动效果时，copy过来直接用就好。<br>如果你自己怎么调都觉得不满意时，可以去<a href="https://easings.net/zh-cn" target="_blank" rel="noopener">缓动函数速查表</a>网站选择常用的运动效果，也是很方便呢。</p>
+<h2 id="requestAnimationFrame函数"><a href="#requestAnimationFrame函数" class="headerlink" title="requestAnimationFrame函数"></a>requestAnimationFrame函数</h2><p>假如，我是说假如你的项目要运行到某些不那么现代化的浏览器上。&lt;咳咳，IE往哪里躲呢？&gt; 它并不支持css3的transition以及transform属性，我们该怎么办呢？<br>是的。我们可以选择setTimeout或setInterval来不断更新元素的状态位置等实现动画。目前又多了一种实现动画的方案，即<span style="color:#3bb1b3;font-weight:700">requestAnimationFrame()</span>方法。它类似于setTimeout递归调用同一方法不断更新画面，以达到动起来的效果。但它是由浏览器专门为动画提供的API。在运行时，浏览器会自动的对它进行优化。并且页面不是在激活状态下，动画会自动暂停，有效节省了CPU的开销。很友善。<br>它使用也很简单<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">step</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//some repeat code</span></span><br><span class="line">    aID = requestAnimationFrame(step)</span><br><span class="line">&#125;</span><br><span class="line">step()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果要取消这个定时器</span></span><br><span class="line">cancelAnimationFrame(aID)</span><br></pre></td></tr></table></figure></p>
+<p>注意到它并不需要你手动设置时间间隔了吗，那它要怎样确认该隔多少时间调用一次回调函数呢？<br>在Javascript中，setTimeout任务被放进了异步队列中，只有等主线程上的任务被执行完了后，才会执行异步队列中的任务，因此会导致setTimeout的实际执行时间一般比设置的时间要晚。另外不同设备的屏幕刷新率(就是屏幕每秒刷新多少次，大部分都是60次，就是每16.7ms刷新一次)。而setTimeout只能设置一个固定的时间值，这个时间不一定和屏幕的刷新时间相同。基于这两种原因，导致了setTimeout的执行步调和屏幕的刷新频率不一致，从而引起丢帧的现象，引起动画卡顿。<br>明白requestAnimationFrame不设定间隔时间的用意了吧。这也是它最大的优势：由系统来决定回调函数执行的时间。具体来说，如果屏幕刷新率是60Hz，那么我的间隔时间就是16.7ms，如果屏幕刷新率是75Hz，那么我的间隔时间就是13.3ms，它能保证回调函数在屏幕的每次刷新过程中，只被执行一次，这样就不会出现丢帧，动画卡顿的现象出现了。<br>讲了这么多，还没有讲到如果才能实现贝塞尔曲线的那种炫酷的效果呢？汗颜~。这就要用到Tween.js了，它对所有的缓动效果做了个封装，本来它是用在Flash当中的，下面代码中我只取了几个常用的。有兴趣的自己去查哟。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Tween.js</span></span><br><span class="line"><span class="comment"> * t: current time（当前时间）；</span></span><br><span class="line"><span class="comment"> * b: beginning value（初始值）；</span></span><br><span class="line"><span class="comment"> * c: change in value（变化量）；</span></span><br><span class="line"><span class="comment"> * d: duration（持续时间）。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> Tween = &#123;</span><br><span class="line">    Linear: <span class="function"><span class="keyword">function</span>(<span class="params">t, b, c, d</span>) </span>&#123; </span><br><span class="line">        <span class="keyword">return</span> c * t / d + b; </span><br><span class="line">    &#125;,</span><br><span class="line">    Quad: &#123;</span><br><span class="line">        easeIn: <span class="function"><span class="keyword">function</span>(<span class="params">t, b, c, d</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> c * (t /= d) * t + b;</span><br><span class="line">        &#125;,</span><br><span class="line">        easeOut: <span class="function"><span class="keyword">function</span>(<span class="params">t, b, c, d</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> -c *(t /= d)*(t<span class="number">-2</span>) + b;</span><br><span class="line">        &#125;,</span><br><span class="line">        easeInOut: <span class="function"><span class="keyword">function</span>(<span class="params">t, b, c, d</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> ((t /= d / <span class="number">2</span>) &lt; <span class="number">1</span>) <span class="keyword">return</span> c / <span class="number">2</span> * t * t + b;</span><br><span class="line">            <span class="keyword">return</span> -c / <span class="number">2</span> * ((--t) * (t<span class="number">-2</span>) - <span class="number">1</span>) + b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Math</span>.tween = Tween;</span><br></pre></td></tr></table></figure></p>
+<p>和requestAnimationFrame结合来用：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> startTime = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">step</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Tween调用后返回的值是动画元素elment当前应该处在的位置,其中，目标位置和动画持续时间是由你来定的。</span></span><br><span class="line">    <span class="keyword">let</span> t = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    element.style.left = Tween.Quad.easeOut(t - startTime, element.style.left, 目标位置-elment.style.left, 动画持续时间);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(t-startTime &lt; duration) &#123;</span><br><span class="line">        requestAnimationFrame(step);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">step()</span><br></pre></td></tr></table></figure></p>
+<p>除了Tween.js的库，目前出了一个<a href="https://github.com/gre/bezier-easing" target="_blank" rel="noopener">Cubic Bezier</a>曲线缓动的库，它与css的transition贝塞尔曲线完全相同，直观又方便。相对来说更喜欢这个库。它与requestAnimationFrame结合来用时，也能定制出不同的动画效果<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">move</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//cubicBezierArray,你自己定制的贝塞尔曲线，如[0, 0, 1, 0.5]</span></span><br><span class="line">    <span class="comment">// duration, 你自己定制的动画持续时间</span></span><br><span class="line">    <span class="keyword">const</span> easing = bezier(...cubicBezierArray);</span><br><span class="line">    <span class="keyword">const</span> startTime = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    <span class="keyword">let</span> startLeft = element.style.left;</span><br><span class="line">    <span class="keyword">const</span> step = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> currentTime = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">        <span class="keyword">let</span> pPercent = (currentTime - startTime)/duration;</span><br><span class="line">        element.style.left = startLeft + easing(pPercent)*(目标位置 - startLeft)</span><br><span class="line">    &#125;</span><br><span class="line">    step();</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></p>
+<h2 id="keyframes-animation"><a href="#keyframes-animation" class="headerlink" title="keyframes-animation"></a>keyframes-animation</h2><p>除了css3的transition，单从上面animation字面意思，我们就知道是“动画”的意思。Animation只能作用在页面上已经存在的元素,它是如何让元素动起来的呢？主要是keyframes，我们称之为“关键帧”.<br>keyframes具有自己的语法规则，它的命名是由@keyframes开头，使用如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*animationName是你自己定义的动画名称*/</span></span><br><span class="line">@<span class="keyword">keyframes</span> animationName &#123;</span><br><span class="line">    0% &#123;</span><br><span class="line">        <span class="attribute">Properties</span>: Properties value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-tag">Percentage</span> &#123;</span><br><span class="line">        <span class="attribute">Properties</span>: Properties value;</span><br><span class="line">    &#125;</span><br><span class="line">    100% &#123;</span><br><span class="line">        <span class="attribute">Properties</span>: Properties value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面代码中，0 ~ 100 之间，你可以添加多个百分比，我们在每个百分比中给需要运动的元素添加不同的属性，这样可以让元素达到不断运动的效果，比如说移动，改变元素颜色，位置，大小，形状等。0%和100%有相应的简写方法：0% -&gt; from,  100% -&gt; to。和英语单词语义一致。<br>那keyframes定义好后，我们要怎么去调用animationNamed动画呢？<br>css3新增的animation属性，正是为keyframes定义的动画所准备的。调用也很简单，跟transiton使用类似<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">animation</span>: <span class="selector-tag">animationName</span> <span class="selector-tag">duration</span> <span class="selector-tag">animation-timing-function</span> <span class="selector-tag">animation-delay</span> <span class="selector-tag">animation-iteration-count</span> <span class="selector-tag">animation-direction</span></span><br><span class="line"><span class="comment">/*animation-timing-function 跟 Transiton-timing-function一样，除了已有的5个效果，你还可以自定义贝塞尔曲线*/</span></span><br><span class="line"><span class="comment">/*animation-iteration-count 是指循坏次数，默认为1次。在做loading效果时，常用的是infinite，表无限循环。*/</span></span><br></pre></td></tr></table></figure></p>
+<p>如果对于animation效果没有直观感受，可以参考下<a href="https://daneden.github.io/animate.css/" target="_blank" rel="noopener">animate.css</a>网站，里面包含了许多效果，都是用keyframes来定制的。学习下别人是怎么来写这些炫酷的动画效果的。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果你想让自己的项目让别人眼前一亮，写出一个流畅的动画效果是非常重要的。尤其是目前移动端大放异彩的时代，你可以随心使用那些新出的css属性，不用过分考虑那些兼容性问题。况且，目前互联网技术发达，很多问题网上都有许多很好的解决方案，只要用心去查找资料，就能不经意间挖出宝藏，我很喜欢查资料的这个过程，每次都感叹，原来这个问题，已经有人遇到过并分享其解决方案，甚是欢喜。<br>以前从不想写博客，顾忌自己文笔差，担忧误导别人。但细细想来，我又不是写什么误导别人三观的文章。对别人生活造不成太大影响，顶多可能会有几处自己理解有误的地方。不碍大事，互相学习进步嘛。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/18/svg-icon/" rel="next" title="了解网页Icon的用法">
+                <i class="fa fa-chevron-left"></i> 了解网页Icon的用法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="xiyue" />
+            
+              <p class="site-author-name" itemprop="name">xiyue</p>
+              <p class="site-description motion-element" itemprop="description">刚被太阳收拾去,又教明月送将来</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#transition动画"><span class="nav-number">1.</span> <span class="nav-text">transition动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎样使用贝塞尔曲线？"><span class="nav-number">2.</span> <span class="nav-text">怎样使用贝塞尔曲线？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#requestAnimationFrame函数"><span class="nav-number">3.</span> <span class="nav-text">requestAnimationFrame函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#keyframes-animation"><span class="nav-number">4.</span> <span class="nav-text">keyframes-animation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiyue</span>
+
+  
+</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
