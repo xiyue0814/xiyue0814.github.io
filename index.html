@@ -242,6 +242,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/03/‘函数节流和函数防抖的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiyue">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of xiyue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/03/‘函数节流和函数防抖的区别/" itemprop="url">函数节流和函数防抖的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T19:32:50+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS相关/" itemprop="url" rel="index">
+                    <span itemprop="name">JS相关</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>##函数节流&amp;函数防抖<br>函数节流和函数防抖在一般取名为throttle和debounce，主要用在js性能优化上，尤其是对于函数被触发的频率太高，如scroll、mousemove、resize事件。如果处理事件的函数稍微复杂或者大量的操作DOM，响应速度跟不上触发频率，就会导致卡顿、延迟或者假死现象。实际上在很多情况下并不需要如此夸张的调用执行函数。<br>throttle和debounce概念很类似，并且都是利用setTimeout将被执行的函数延迟一段时间执行。但是有细微的差别。我们先看看定义：</p>
+<blockquote>
+<p>函数节流：定义一个wait等待时间，执行函数在wait秒内最多只能执行一次。</p>
+</blockquote>
+<blockquote>
+<p>函数防抖：定义一个wait等待时间，执行函数在触发事件结束后，等待wait秒执行一次，如果没有到wait秒，又有新的事件进来，则重新计算时间。</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/03/‘函数节流和函数防抖的区别/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/27/发布-订阅者模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -284,6 +436,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS相关/" itemprop="url" rel="index">
+                    <span itemprop="name">JS相关</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -312,24 +486,17 @@
 
       
         
-          
-            <h2 id="什么是设计模式？"><a href="#什么是设计模式？" class="headerlink" title="什么是设计模式？"></a>什么是设计模式？</h2><p><strong>设计模式</strong>其实是一些经过了大量实际项目验证的优秀解决方案。它是解决某些问题的一种思想，与具体的使用语言无关。<br>从某些角度来讲，设计模式可能带来代码量的增加，或许也会把系统的逻辑搞的更复杂。但软件的开发成本不仅仅在开发阶段，更包含维护阶段。而设计模式能在维护阶段为我们带来好处。设计模式的实现都遵循一条原则，即<strong>‘找出程序中变化的地方，并将其封装起来’</strong>。<br>学习模式如果脱离了实际的场景，都是无意义的。因为很多模式的类图看起来几乎是一样的。所以在学习某种设计模式时一定要清楚：<span style="color:#3bb1b3;font-weight:700">这个模式是为了解决什么问题而出现的。</span></p>
+          <h2 id="什么是设计模式？"><a href="#什么是设计模式？" class="headerlink" title="什么是设计模式？"></a>什么是设计模式？</h2><p><strong>设计模式</strong>其实是一些经过了大量实际项目验证的优秀解决方案。它是解决某些问题的一种思想，与具体的使用语言无关。<br>从某些角度来讲，设计模式可能带来代码量的增加，或许也会把系统的逻辑搞的更复杂。但软件的开发成本不仅仅在开发阶段，更包含维护阶段。而设计模式能在维护阶段为我们带来好处。设计模式的实现都遵循一条原则，即<strong>‘找出程序中变化的地方，并将其封装起来’</strong>。<br>学习模式如果脱离了实际的场景，都是无意义的。因为很多模式的类图看起来几乎是一样的。所以在学习某种设计模式时一定要清楚：<span style="color:#3bb1b3;font-weight:700">这个模式是为了解决什么问题而出现的。</span></p>
 <h2 id="发布-订阅者模式"><a href="#发布-订阅者模式" class="headerlink" title="发布-订阅者模式"></a>发布-订阅者模式</h2><blockquote>
-<p>发布-订阅者模式是指一个对象维护一个依赖列表，当这个对象的状态发生改变时，会自动通知所有依赖于它的对象。<br>为什么会出现发布-订阅者模式呢？我举个例子：比如微信公众号“前端课程”有很多人订阅，当公众号有更新时，就会遍历它所有的订阅者，并自动将内容推送给我们。这里公众号就是发布者，而我们是订阅者。我们是依赖于公众号的对象，这样就避免订阅者不停的刷新公众号看是否有更新。<br>从以上描述可以看出发布者才是握有掌控权的那个，它拥有增加观察者、移除观察者以及通知观察者的功能。而订阅者只负责当接收到消息后，决定自己的行为，就像是一个函数执行内部的代码。<br>这里简单实现下这个模式：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Publish</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 所有订阅者的集合</span></span><br><span class="line">    <span class="comment">// 解释下这个集合为什么是对象，而不是一个数组。如果“前端课程”公众号</span></span><br><span class="line">    <span class="comment">// 有很多分类，比如JS，HTML，CSS。订阅者只关心其中的某类如CSS，那</span></span><br><span class="line">    <span class="comment">// 么公众号在推送的时候,就不能傻乎乎的把所有的类别都给推送过去吧</span></span><br><span class="line">    <span class="comment">// 别人不关心啊,完了别人还的进行筛选。出力不讨好！</span></span><br><span class="line">    <span class="keyword">this</span>._events = &#123;&#125;; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 增加观察者</span></span><br><span class="line">Publish.prototype.listen = <span class="function"><span class="keyword">function</span>(<span class="params">type, subscribe</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 这里的type就是订阅者关心的某类。</span></span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">this</span>._events[type]) &#123;</span><br><span class="line">        <span class="keyword">this</span>._events[type] = [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>._events[type].push(subscribe);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 通知观察者</span></span><br><span class="line">Publish.protype.trigger = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> type = [].shift.call(<span class="built_in">arguments</span>),</span><br><span class="line">        subscribes = <span class="keyword">this</span>._events[type];</span><br><span class="line">    <span class="keyword">if</span>(!subscribes || !subscribes.length) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 遍历观察者</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; subscribes.length; i++) &#123;</span><br><span class="line">        subscribes[i].apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 移除观察者</span></span><br><span class="line">Publish.protype.remove = <span class="function"><span class="keyword">function</span>(<span class="params">type, fn</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> subscribes = <span class="keyword">this</span>._events[type];</span><br><span class="line">    <span class="keyword">if</span>(!subscribes) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!fn) &#123;</span><br><span class="line">        subscribes &amp;&amp; (subscribes.length = <span class="number">0</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = subscribes.length<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span>(subscribes[i] == fn) &#123;</span><br><span class="line">                subscribes.splice(i, <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> publish = <span class="keyword">new</span> Publish();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加订阅者</span></span><br><span class="line">publish.listen(<span class="string">'eventName'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 订阅者1</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 通知订阅者-执行订阅者1的代码</span></span><br><span class="line">publish.trigger(<span class="string">'eventName'</span>, <span class="built_in">arguments</span>)</span><br></pre></td></tr></table></figure></p>
+<p>发布-订阅者模式是指一个对象维护一个依赖列表，当这个对象的状态发生改变时，会自动通知所有依赖于它的对象。</p>
 </blockquote>
-<h2 id="必须先订阅再发布吗？"><a href="#必须先订阅再发布吗？" class="headerlink" title="必须先订阅再发布吗？"></a>必须先订阅再发布吗？</h2><p>我们了解的发布-订阅者模式都是先订阅一个消息，随后才接收到发布者的消息。但如果反过来，发布者先发布一条消息，然而此时并没有订阅者。这条消息无疑就被忽略了。<br>在某些情况下，我们需要先将这条消息保存起来，等到有对象来订阅它的时候再重新把消息发送给订阅者。<br>其实现原理:</p>
-<blockquote>
-<p>我们先建一个存离线事件的堆栈，当事件发布的时候，如果没有订阅者来接收该事件，就暂时将这个发布事件的动作包裹成一个函数，推送到一个堆栈中。当有订阅者的来订阅此事件时候，就遍历该堆栈执行里面的包装函数。当然该堆栈的生命周期只有一次。<br>其核心代码如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Publish</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>._events = &#123;&#125;;</span><br><span class="line">    <span class="comment">// 用来存离线事件的堆栈</span></span><br><span class="line">    <span class="keyword">this</span>.offlineStacks = [];</span><br><span class="line">&#125;</span><br><span class="line">Publish.prototype.listen = <span class="function"><span class="keyword">function</span>(<span class="params">type, subscribe</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">this</span>._events[type]) &#123;</span><br><span class="line">        <span class="keyword">this</span>._events[type] = [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>._events[type].push(subscribe);</span><br><span class="line">    <span class="comment">// 检查是否有离线事件</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.offlineStacks) &#123;</span><br><span class="line">        <span class="keyword">this</span>.offlineStacks.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">            fn();           </span><br><span class="line">        &#125;)   </span><br><span class="line">        <span class="keyword">this</span>._events[type] = [];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.offlineStacks = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line">Publish.prototype._trigger = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> type = [].shift.call(<span class="built_in">arguments</span>);</span><br><span class="line">        subscribes = <span class="keyword">this</span>._events[type];</span><br><span class="line">    <span class="keyword">if</span>(!subscribes || !subscribes.length) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; subscribes.length; i++) &#123;</span><br><span class="line">        subscribes[i].apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Publish.prototype.trigger = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;    </span><br><span class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">var</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="comment">// 判断是否有订阅者，如果没有就把发布事件的动作包装成一个函数推送到离线栈</span></span><br><span class="line">    <span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> _this._trigger.apply(_this, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.offlineStacks) &#123;</span><br><span class="line">        <span class="keyword">this</span>.offlineStacks.push(fn);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        fn();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> publish = <span class="keyword">new</span> Publish();</span><br><span class="line"></span><br><span class="line">publish.trigger(<span class="string">'eventName'</span>, <span class="number">1</span>);</span><br><span class="line">publish.trigger(<span class="string">'eventName'</span>, <span class="number">2</span>);</span><br><span class="line">publish.listen(<span class="string">'eventName'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h2 id="发布-订阅者模式的优点与缺点？"><a href="#发布-订阅者模式的优点与缺点？" class="headerlink" title="发布-订阅者模式的优点与缺点？"></a>发布-订阅者模式的优点与缺点？</h2><p><strong>其优点</strong></p>
-<ol>
-<li>发布-订阅者模式可以广泛应用于异步编程中，这是一种替代传递回调函数的方案。比如我们可以订阅  ajax请求的error、succ等事件。或者在动画的每一帧完成后做其他的一些事情，这样能比较精确的控制动画。</li>
-<li>发布-订阅者模式可以让两个对象解耦。一个对象不用再显示的调用另外一个对象的接口。只要之前约定的事件名没有变化，就可以自由的改变它们<br><strong>其缺点</strong></li>
-<li>创建订阅者本身要消耗一定的时间和内存。如果订阅者订阅的消息一直都没有通知订阅者，但这个订阅者始终还是存在内存中的。</li>
-<li>如果过度使用该模式，对象和对象之间的联系也不容易找到，会导致程序难以调试和维护。</li>
-</ol>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/27/发布-订阅者模式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -866,7 +1033,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -877,7 +1044,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
